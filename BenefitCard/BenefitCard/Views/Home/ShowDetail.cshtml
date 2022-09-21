@@ -1,0 +1,96 @@
+﻿@model Facility
+
+@{
+	ViewData["Title"] = "ShowDetail";
+}
+
+<h1> @Html.DisplayFor(name => Model.Name)</h1>
+
+<h2>Location</h2>
+	<table class="table-bordered">
+		<tr>
+			<td>
+				Street:
+			</td>
+			<td>
+				@Html.DisplayFor(name => Model.Address.Street)
+			</td>
+		<tr>
+			<td>
+				City:
+			</td>
+			<td>
+				@Html.DisplayFor(name => Model.Address.City)
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Zip Code:
+			</td>
+			<td>
+				@Html.DisplayFor(name => Model.Address.ZipCode)
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Distance:
+			</td>
+			<td>
+				@Html.DisplayFor(name => Model.distance) m
+			</td>
+		</tr>
+	</table>
+<br />
+
+<table class="table-dark">
+	<tr>
+		<td style="text-decoration: underline">
+			What can you do there?
+		</td>
+	</tr>
+	<tr>
+		<td>
+			@foreach (var item in Model.Activities)
+			{
+				if (item == Model.Activities.Last())
+				{
+					<span>@Html.DisplayFor(activity => item) </span>
+				}
+				else
+				{
+					<span>@Html.DisplayFor(activity => item), </span>
+				}
+			}
+		</td>
+	</tr>
+	<tr>
+		<td align="left">
+			For more information please follow <a id="HyperLink1" href="@Html.DisplayFor(activity => Model.Url)">this link</a>
+		</td>
+	</tr>
+</table>
+
+<br />
+
+<h3>Map</h3>
+<br />
+
+<fieldset>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<div id="googleMap" style="height:400px;width:100%;"></div>
+	<script>
+
+		function myMap() {
+			var myCenter = new google.maps.LatLng(@Model.GetCoordinates().Latitude, @Model.GetCoordinates().Longtitude);
+			var mapProp = { center: myCenter, zoom: 12, scrollwheel: false, draggable: true, mapTypeId: google.maps.MapTypeId.ROADMAP };
+			var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+			var marker = new google.maps.Marker({ position: myCenter });
+			marker.setMap(map);
+		}
+	</script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHQFxLKLWMvOQR5cCjKxkWED2YH98V2G8&callback=myMap"></script>
+</fieldset>

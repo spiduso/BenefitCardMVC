@@ -1,0 +1,74 @@
+﻿@model List<string>
+@{
+    ViewData["Title"] = "ListActivities";
+}
+
+<h2>Choose activities</h2>
+<div class="container">
+    <style>
+        .dropdown-menu-form {
+            padding: 5px 10px 0;
+            max-height: 250px;
+            overflow-y: scroll;
+        }
+
+        .drop_btn { /* This is for styling the dropdown button */
+            background-color: #7A8288;
+            color: white;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .vec :hover {
+            background-color: black;
+        }
+    </style>
+
+    @using (Html.BeginForm(new { action = "ListPlaces" }))
+    {
+        <table>
+            <col width="70%">
+            <tr>
+                <td>
+                    <div class="dropdown">
+                        <a class="dropdown-toggle btn" data-toggle="dropdown" href="#">
+                            Possible activities
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-form drop_btn" role="menu">
+                            @foreach (var item in Model)
+                            {
+                                <div class="vec">
+                                    <li class="dont">
+                                        <label ="content">
+                                            <input type="checkbox" name="choosenActivities" id=@item value=@item />
+                                            @Html.DisplayFor(modelItem => item)
+                                        </label>
+                                    </li>
+                                </div>
+                            }
+                        </ul>
+                    </div>
+                </td>
+
+
+                <td>
+                    <input align="bottom" id="SubmitActivity" type="submit" class="btn btn-outline-success" value="Submit all" />
+                </td>
+
+            </tr>
+        </table>
+    }
+    <style>
+        .dropdown-menu-form {
+            padding: 5px 10px 0;
+            max-height: 300px;
+            overflow-y: scroll;
+        }
+    </style>
+</div>
+
+
+
+
