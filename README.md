@@ -6,7 +6,4 @@ Projekt ze 7-hodinoveho hackathonu, ktery uzivateli zobrazi lokality, ve kterych
 3. (View) [Potom co si uzivatel vybere aktivity]() (Controller) [Controller mu najde prislusne lokality](https://github.com/spiduso/BenefitCardMVC/blob/6722bda61eb0da4b445b59bdae1a2544ed12b0c2/BenefitCard/BenefitCard/Controllers/HomeController.cs#L44) (View) [ktere ze zobrazi na View TableActivities](https://github.com/spiduso/BenefitCardMVC/blob/6722bda61eb0da4b445b59bdae1a2544ed12b0c2/BenefitCard/BenefitCard/Views/Home/TableActivities.cshtml#L1)
 4. (View) Uzivatel muze rozkliklnout detaily lokality a [potom se mu zobrazi View ShowDetail, ktery dostane detaily o lokalite a zobrazi je](https://github.com/spiduso/BenefitCardMVC/blob/6722bda61eb0da4b445b59bdae1a2544ed12b0c2/BenefitCard/BenefitCard/Views/Home/ShowDetail.cshtml)
 
-Demo video <br>
-<video controls>
-  <source src="demo_video.mp4" type="video/mp4">
-</video>
+[Demo video na YouTube](https://youtu.be/J4zklf-WP40)
